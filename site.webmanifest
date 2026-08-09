@@ -1,0 +1,9 @@
+{
+  "name": "Magnus Madsen | Portfolio",
+  "short_name": "MM Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090b0f",
+  "theme_color": "#090b0f",
+  "icons": []
+}
