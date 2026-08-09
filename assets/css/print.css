@@ -1,0 +1,96 @@
+@media print {
+  :root {
+    --text: #111;
+    --muted: #444;
+    --muted-2: #555;
+    --line: rgba(0, 0, 0, 0.18);
+    --line-strong: rgba(0, 0, 0, 0.3);
+  }
+  body {
+    color: #111;
+    background: #fff;
+  }
+  .page-noise,
+  .site-header,
+  .network-canvas,
+  .hero-glow,
+  .scroll-cue,
+  .portrait-scan,
+  .floating-card,
+  .contact-grid-bg {
+    display: none !important;
+  }
+  .hero {
+    min-height: auto;
+    height: auto;
+    border-bottom: 1px solid #bbb;
+    background: #fff;
+  }
+  .hero::before {
+    display: none;
+  }
+  .hero-grid {
+    grid-template-columns: 1.35fr 0.65fr;
+    min-height: auto;
+    padding: 40px 0;
+  }
+  .hero h1 {
+    font-size: 44pt;
+  }
+  .hero h1 span,
+  .section-index,
+  .eyebrow span {
+    color: #d74b10;
+  }
+  .hero-lead {
+    color: #333;
+  }
+  .hero-actions {
+    display: none;
+  }
+  .portrait-frame {
+    aspect-ratio: 1;
+    box-shadow: none;
+  }
+  .section {
+    break-inside: avoid;
+    padding: 45px 0;
+    background: #fff;
+  }
+  .projects-section {
+    break-inside: auto;
+  }
+  .featured-project,
+  .project-card,
+  .skill-group {
+    color: #111;
+    background: #fff;
+    break-inside: avoid;
+  }
+  .project-visual,
+  .featured-preview {
+    display: none;
+  }
+  .featured-project {
+    display: block;
+    min-height: 0;
+  }
+  .featured-copy {
+    min-height: 0;
+  }
+  .section-heading {
+    margin-bottom: 35px;
+  }
+  .section-heading h2 {
+    font-size: 34pt;
+  }
+  .contact-section {
+    color: #fff;
+    background: #111;
+    break-before: page;
+  }
+  .site-footer {
+    color: #fff;
+    background: #111;
+  }
+}
