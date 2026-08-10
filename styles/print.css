@@ -48,6 +48,10 @@
   .hero-actions {
     display: none;
   }
+  .gallery-trigger,
+  .project-gallery {
+    display: none !important;
+  }
   .portrait-frame {
     aspect-ratio: 1;
     box-shadow: none;

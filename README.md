@@ -13,6 +13,9 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 | Tilføje eller rette projekter | `sections/projects/projects.data.js` |
 | Projektsektionens overskrift og samling | `sections/projects/projects.js` |
 | Udseendet på et projektkort | `components/project-card/project-card.css` |
+| Projektgalleriet og dets navigation | `components/project-gallery/` |
+| Webklare projektbilleder | `assets/images/projects/` |
+| Projektvideo og PDF-rapporter | `assets/videos/` og `assets/docs/` |
 | Uddannelse, job eller certifikater | `sections/experience/experience.data.js` |
 | Kompetencer og teknologier | `sections/skills/skills.data.js` |
 | Kontaktteksten | `sections/contact/contact.js` |
@@ -32,7 +35,10 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 │   └── site.config.js             # Fælles profil, links og navigation
 │
 ├── assets/
-│   ├── images/                    # Lokale billeder kan tilføjes her
+│   ├── docs/                      # Weboptimerede projektrapporter
+│   ├── images/
+│   │   └── projects/              # WebP-billeder sorteret efter projekt
+│   ├── videos/                    # Projektvideoer; indlæses først ved afspilning
 │   └── fonts/                     # Lokale webfonts kan tilføjes her
 │
 ├── components/
@@ -42,6 +48,9 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 │   ├── project-card/
 │   │   ├── project-card.js        # Genbrugelig projektskabelon
 │   │   └── project-card.css
+│   ├── project-gallery/
+│   │   ├── project-gallery.js     # Tilgængeligt billed- og videogalleri
+│   │   └── project-gallery.css
 │   └── footer/
 │       ├── footer.js
 │       └── footer.css
@@ -96,9 +105,51 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 },
 ```
 
-Eksisterende CSS-visualer kan vælges med `visual: "jarvis"`, `"dashboard"`, `"sensor"`, `"homelab"` eller `"rover"`. Brug `"default"` til et neutralt kort. Et almindeligt billede kan senere bruges via projektets valgfri `image`-felt.
+Eksisterende CSS-visualer kan vælges med `visual: "jarvis"`, `"dashboard"`, `"sensor"`, `"homelab"`, `"optilogic"` eller `"rover"`. Brug `"default"` til et neutralt kort.
 
-De store hovedprojekter øverst ligger i `featuredProjects` i samme fil. Et hovedprojekt kan bruge et screenshot i `preview.image` eller et specialbygget CSS-visual i `preview.visual`.
+Et projekt kan få et webklart foto eller screenshot med `media`. Brug `mode: "hybrid"`, hvis billedet skal kombineres med projektets CSS-visual:
+
+```js
+media: {
+  mode: "hybrid",
+  src: "assets/images/projects/mit-projekt/preview.webp",
+  alt: "Kort og konkret beskrivelse af billedet",
+  width: 1600,
+  height: 1200,
+  badge: "LIVE / HEALTHY",
+},
+```
+
+Tilføj et galleri med `gallery.items`. Billeder og video oprettes først i dialogen, når en besøgende åbner galleriet, så de øvrige materialer ikke gør den første sidevisning langsommere:
+
+```js
+gallery: {
+  buttonLabel: "Se projektmateriale",
+  eyebrow: "TEKNISK DEMO",
+  title: "Projektets gallerioverskrift",
+  description: "Hvad materialet dokumenterer.",
+  items: [
+    {
+      type: "image",
+      label: "PROTOTYPE",
+      title: "Fysisk opstilling",
+      caption: "Hvad den besøgende skal lægge mærke til.",
+      src: "assets/images/projects/mit-projekt/prototype.webp",
+      alt: "Beskrivelse af prototypen",
+      width: 1600,
+      height: 1200,
+    },
+  ],
+},
+```
+
+Rapporter og GitHub-links tilføjes med projektets `links`-liste. De store hovedprojekter øverst ligger i `featuredProjects` i samme fil.
+
+## Billeder og privatliv
+
+De billeder, som siden bruger, er konverteret til WebP uden EXIF-, kamera- eller GPS-metadata. Gem nye webaktiver under projektets egen mappe i `assets/images/projects/` og undgå at publicere originale HEIC-filer direkte.
+
+Et hovedprojekt kan bruge et screenshot i `preview.image` eller et specialbygget CSS-visual i `preview.visual`.
 
 ## Sådan hænger siden sammen
 
@@ -106,7 +157,8 @@ De store hovedprojekter øverst ligger i `featuredProjects` i samme fil. Et hove
 2. `js/main.js` kalder render-funktionen for hver sektion.
 3. En sektions `.data.js` indeholder det gentagne indhold.
 4. Sektionens `.js` samler indholdet.
-5. CSS ligger ved den komponent eller sektion, den påvirker.
+5. Projektgalleriet indlæser kun det valgte medie, når dialogen åbnes.
+6. CSS ligger ved den komponent eller sektion, den påvirker.
 
 Det betyder, at en fejl i projektsektionen normalt kan findes i dens egen mappe uden at lede i resten af siden.
 

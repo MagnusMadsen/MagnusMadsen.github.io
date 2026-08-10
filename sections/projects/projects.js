@@ -7,6 +7,10 @@ import {
   renderFeaturedProject,
   renderProjectCard,
 } from "../../components/project-card/project-card.js";
+import {
+  initProjectGallery,
+  renderProjectGallery,
+} from "../../components/project-gallery/project-gallery.js";
 import { siteConfig } from "../../config/site.config.js";
 
 export function renderProjects() {
@@ -37,5 +41,10 @@ export function renderProjects() {
           >Se alle repositories</a>
         </div>
       </div>
+      ${renderProjectGallery()}
     </section>`;
+}
+
+export function initProjects() {
+  initProjectGallery([...featuredProjects, ...projects]);
 }

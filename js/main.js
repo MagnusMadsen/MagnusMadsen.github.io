@@ -4,7 +4,10 @@ import {
 } from "../components/navigation/navigation.js";
 import { renderFooter } from "../components/footer/footer.js";
 import { renderHero } from "../sections/hero/hero.js";
-import { renderProjects } from "../sections/projects/projects.js";
+import {
+  initProjects,
+  renderProjects,
+} from "../sections/projects/projects.js";
 import { renderExperience } from "../sections/experience/experience.js";
 import { renderSkills } from "../sections/skills/skills.js";
 import { renderContact } from "../sections/contact/contact.js";
@@ -36,6 +39,7 @@ function initInteractions() {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   initNavigation();
+  initProjects();
   initRevealAnimations(reducedMotion);
   initTiltEffects(reducedMotion);
   initNetworkCanvas(reducedMotion);
