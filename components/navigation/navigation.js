@@ -1,3 +1,54 @@
+import { siteConfig } from "../../config/site.config.js";
+
+export function renderNavigation() {
+  const desktopLinks = siteConfig.navigation
+    .map(({ label, href }) => `<a href="${href}">${label}</a>`)
+    .join("");
+
+  const mobileLinks = siteConfig.navigation
+    .map(
+      ({ label, href }, index) => `
+        <a href="${href}">
+          <span>${String(index).padStart(2, "0")}</span> ${label}
+        </a>`,
+    )
+    .join("");
+
+  return `
+    <header class="site-header" data-header>
+      <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="${siteConfig.name} – tilbage til toppen">
+          <span class="brand-mark">MM</span>
+          <span class="brand-divider">/</span>
+          <span class="brand-label">PORTFOLIO</span>
+        </a>
+        <nav class="desktop-nav" aria-label="Primær navigation">
+          ${desktopLinks}
+        </nav>
+        <div class="header-status">
+          <span class="status-dot"></span>${siteConfig.status}
+        </div>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Åbn menu"
+          aria-expanded="false"
+          aria-controls="mobile-navigation"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+      <nav
+        class="mobile-nav"
+        id="mobile-navigation"
+        aria-label="Mobilnavigation"
+        inert
+      >
+        ${mobileLinks}
+      </nav>
+    </header>`;
+}
+
 export function initNavigation() {
   const header = document.querySelector("[data-header]");
   const toggle = document.querySelector(".nav-toggle");
