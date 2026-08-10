@@ -20,7 +20,7 @@ export function renderHero() {
           <p class="hero-lead reveal">
             IT-teknolog og IT-sikkerhedsstuderende med hands-on erfaring i
             Linux, netværk og OT. Min vej ind i IT/OT kombinerer teknisk
-            uddannelser med to+ år som selvstændig i AV-teknik.
+            uddannelser med 2+ år som selvstændig i AV-teknik.
           </p>
           <div class="hero-actions reveal">
             <a class="button button-primary" href="#projekter">
