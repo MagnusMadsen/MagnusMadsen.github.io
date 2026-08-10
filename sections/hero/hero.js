@@ -15,8 +15,8 @@ export function renderHero() {
             MAGNUS MADSEN <span>/</span> IT &amp; CYBERSIKKERHED
           </p>
           <h1 id="hero-title" class="reveal">
-            Jeg bygger sikre systemer
-            <span>fra netværkstrafik til drift.</span>
+            Magnus Madsen CV 
+            <span>fra IT, netværk, drift og sikkerhed.</span>
           </h1>
           <p class="hero-lead reveal">
             IT-teknolog og IT-sikkerhedsstuderende med hands-on erfaring i
