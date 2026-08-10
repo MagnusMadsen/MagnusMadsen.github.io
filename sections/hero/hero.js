@@ -19,12 +19,12 @@ export function renderHero() {
           </h1>
           <p class="hero-lead reveal">
             IT-teknolog og IT-sikkerhedsstuderende med hands-on erfaring i
-            Linux, netværk og OT. Min vej ind i IT kombinerer teknisk
-            uddannelse med fem+ år som selvstændig – fra idé til drift.
+            Linux, netværk og OT. Min vej ind i IT/OT kombinerer teknisk
+            uddannelser med to+ år som selvstændig i AV-teknik.
           </p>
           <div class="hero-actions reveal">
             <a class="button button-primary" href="#projekter">
-              Se mine projekter
+              Mine projekter
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M4 10h11M11 6l4 4-4 4" />
               </svg>
@@ -58,7 +58,7 @@ export function renderHero() {
             </div>
             <div>
               <dt>BAGGRUND</dt>
-              <dd>5+ år selvstændig</dd>
+              <dd>Innovation samt tekniske uddanelser &amp; 5+ år selvstændig virksomhed</dd>
             </div>
             <div>
               <dt>STATUS</dt>
