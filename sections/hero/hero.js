@@ -16,13 +16,12 @@ export function renderHero() {
           </p>
           <h1 id="hero-title" class="reveal">
             Magnus Madsen CV 
-            <span>fra IT, netværk, drift og sikkerhed.</span>
+            <span>IT, netværk, drift og sikkerhed.</span>
           </h1>
           <p class="hero-lead reveal">
             IT-teknolog og IT-sikkerhedsstuderende med hands-on erfaring i
             Linux, netværk og OT. Min vej ind i IT kombinerer teknisk
-            uddannelse med fem+ år som selvstændig – og en vane med at tage
-            ansvar fra idé til drift.
+            uddannelse med fem+ år som selvstændig – fra idé til drift.
           </p>
           <div class="hero-actions reveal">
             <a class="button button-primary" href="#projekter">
@@ -50,7 +49,7 @@ export function renderHero() {
             </div>
             <div>
               <dt>FOKUS</dt>
-              <dd>IT/OT &amp; drift</dd>
+              <dd>IT/OT amp; sikkerhed</dd>
             </div>
             <div>
               <dt>BAGGRUND</dt>
@@ -58,7 +57,7 @@ export function renderHero() {
             </div>
             <div>
               <dt>STATUS</dt>
-              <dd><span class="status-dot"></span> Lærer &amp; bygger</dd>
+              <dd><span class="status-dot"></span> IT-sikkerheds &amp; studerende</dd>
             </div>
           </dl>
         </div>

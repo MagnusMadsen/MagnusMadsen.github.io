@@ -6,8 +6,8 @@
  * - `visual` kan være: jarvis, dashboard, sensor, homelab eller default.
  */
 export const projectsSection = {
-  index: "01 / UDVALGTE PROJEKTER",
-  title: "Bygget for at<br />blive brugt.",
+  index: "01 / PROJEKTER",
+  title: "Fremhævet projekter <br /> brugt i virkligheden.",
   introduction:
     "Fra industriel netværkstrafik til lokal AI og familiens fælles dashboard.",
 };
@@ -46,8 +46,8 @@ export const projects = [
     status: "AKTIV",
     title: "Jarvis Voice Assistant",
     description:
-      "En lokal, always-on stemmeassistent med Raspberry Pi Edge, dansk STT, lokal LLM og streaming TTS.",
-    tags: ["FastAPI", "WebSocket", "Ollama", "Raspberry Pi"],
+      "En lokal, always-on stemmeassistent med Raspberry Pi som Edge-device, dansk STT, lokal LLM server og Chatterbox TTS.",
+    tags: ["FastAPI", "WebSocket", "Ollama-qwen3.5:9b", "Raspberry Pi"],
   },
   {
     id: "dashboard",
