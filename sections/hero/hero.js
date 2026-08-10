@@ -58,11 +58,11 @@ export function renderHero() {
             </div>
             <div>
               <dt>BAGGRUND</dt>
-              <dd>Innovation samt tekniske uddanelser &amp; 5+ år selvstændig virksomhed</dd>
+              <dd>Innovation og tekniske uddanelser - 5+ år egen medie-virksomhed</dd>
             </div>
             <div>
               <dt>STATUS</dt>
-              <dd><span class="status-dot"></span> IT-sikkerheds &amp; studerende</dd>
+              <dd><span class="status-dot"></span> IT-sikkerheds studerende</dd>
             </div>
           </dl>
         </div>
