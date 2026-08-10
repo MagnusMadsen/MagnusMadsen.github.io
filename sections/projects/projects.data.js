@@ -57,7 +57,7 @@ export const projects = [
     title: "Family Home Dashboard",
     description:
       "Et vægdashboard til vejr og fælles kalendere med cache, Flask API, Docker og Nginx reverse proxy.",
-    tags: ["Flask", "JavaScript", "Docker", "Nginx"],
+    tags: ["Flask", "JavaScript", "Docker", "Nginx", "Self-signed certificate"],
   },
   {
     id: "sensor",
@@ -77,6 +77,6 @@ export const projects = [
     title: "Linux Homelab",
     description:
       "Mit praktiske driftsmiljø til containere, lagring, media, reverse proxy, fjernadgang og netværksservices.",
-    tags: ["Ubuntu Server", "RAID", "SMB", "Tailscale"],
+    tags: ["Ubuntu Server", "RAID", "SMB", "Tailscale", "Filebrowser", "Jellyfin"],
   },
 ];
