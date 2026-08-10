@@ -60,10 +60,27 @@ export const employment = [
 ];
 
 export const certifications = [
-  { issuer: "THM", title: "Pre Security", source: "TryHackMe · 2025" },
   {
-    issuer: "THM",
+    issuer: "TryHackMe",
     title: "Cyber Security 101",
-    source: "TryHackMe · 2025",
+    source: "Learning Path",
+    date: "14. november 2025",
+    duration: "45 timer 53 minutter",
+    code: "THM-TGDELWBV49",
+    preview:
+      "assets/images/certificates/tryhackme-cyber-security-101.webp",
+    href: "assets/docs/certifikater/THM-TGDELWBV49.pdf",
+    alt: "TryHackMe-certifikat for Cyber Security 101 udstedt til Magnus Bøg Madsen",
+  },
+  {
+    issuer: "TryHackMe",
+    title: "Pre Security",
+    source: "Learning Path",
+    date: "3. marts 2025",
+    duration: "7 timer 28 minutter",
+    code: "THM-TIYJHYFRAQ",
+    preview: "assets/images/certificates/tryhackme-pre-security.webp",
+    href: "assets/docs/certifikater/THM-TIYJHYFRAQ (1).pdf",
+    alt: "TryHackMe-certifikat for Pre Security udstedt til Magnus Bøg Madsen",
   },
 ];

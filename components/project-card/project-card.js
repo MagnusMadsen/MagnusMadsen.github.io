@@ -157,18 +157,22 @@ function renderExploitFeaturedVisual(project) {
         data-project-gallery-open="${project.id}"
         aria-label="Åbn videodemonstration og labmateriale for ${project.title.replace(/<br\s*\/?>/gi, " ")}"
       >
-        <img
-          src="${media.src}"
-          alt="${media.alt}"
-          width="${media.width}"
-          height="${media.height}"
-          loading="lazy"
-          decoding="async"
-        />
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="${media.src}"
+          aria-hidden="true"
+          tabindex="-1"
+        >
+          <source src="${media.videoSrc}" type="video/mp4" />
+        </video>
         <span class="exploit-demo-shade" aria-hidden="true"></span>
         <span class="exploit-demo-badge"><i></i>${media.badge}</span>
         <strong>SE VÆRKTØJET I DRIFT</strong>
-        <small>Demo + fysisk lab</small>
+        <small>Klik for hele demoen + fysisk lab</small>
       </button>
     </div>`;
 }
@@ -304,4 +308,39 @@ export function renderProjectCard(project) {
         ${renderProjectActions(project, "project-card-actions")}
       </div>
     </article>`;
+}
+
+export function initProjectCardMedia() {
+  const previewVideo = document.querySelector(".exploit-demo-card video");
+
+  if (!previewVideo) {
+    return;
+  }
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const saveData = navigator.connection?.saveData;
+
+  if (reducedMotion.matches || saveData) {
+    previewVideo.autoplay = false;
+    previewVideo.pause();
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    previewVideo.play().catch(() => {});
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        previewVideo.play().catch(() => {});
+      } else {
+        previewVideo.pause();
+      }
+    },
+    { threshold: 0.35 },
+  );
+
+  observer.observe(previewVideo);
 }

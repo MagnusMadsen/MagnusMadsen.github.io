@@ -10,13 +10,15 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 |---|---|
 | Profil-links, lokation, status eller navigation | `config/site.config.js` |
 | Forsidens tekst og profilområde | `sections/hero/hero.js` |
+| Profilbilledet | `assets/images/portrait/` og `config/site.config.js` |
 | Tilføje eller rette projekter | `sections/projects/projects.data.js` |
 | Projektsektionens overskrift og samling | `sections/projects/projects.js` |
 | Udseendet på et projektkort | `components/project-card/project-card.css` |
 | Projektgalleriet og dets navigation | `components/project-gallery/` |
 | Webklare projektbilleder | `assets/images/projects/` |
-| Projektvideo og PDF-rapporter | `assets/videos/` og `assets/docs/` |
+| Projektvideoer og PDF-rapporter | `assets/videos/` og `assets/docs/` |
 | Uddannelse, job eller certifikater | `sections/experience/experience.data.js` |
+| Certifikat-forhåndsvisninger | `assets/images/certificates/` |
 | Kompetencer og teknologier | `sections/skills/skills.data.js` |
 | Kontaktteksten | `sections/contact/contact.js` |
 | Farver, bredder og fælles knapper | `styles/base.css` |
@@ -37,8 +39,10 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 ├── assets/
 │   ├── docs/                      # Weboptimerede projektrapporter
 │   ├── images/
+│   │   ├── certificates/          # WebP-forhåndsvisninger af certifikater
+│   │   ├── portrait/              # Weboptimeret profilbillede
 │   │   └── projects/              # WebP-billeder sorteret efter projekt
-│   ├── videos/                    # Projektvideoer; indlæses først ved afspilning
+│   ├── videos/                    # Komprimeret preview og fulde projektvideoer
 │   └── fonts/                     # Lokale webfonts kan tilføjes her
 │
 ├── components/
@@ -147,7 +151,7 @@ Rapporter og GitHub-links tilføjes med projektets `links`-liste. De store hoved
 
 ## Billeder og privatliv
 
-De billeder, som siden bruger, er konverteret til WebP uden EXIF-, kamera- eller GPS-metadata. Gem nye webaktiver under projektets egen mappe i `assets/images/projects/` og undgå at publicere originale HEIC-filer direkte.
+De billeder, som siden bruger, er konverteret til WebP uden EXIF-, kamera- eller GPS-metadata. Gem nye webaktiver under den relevante mappe i `assets/images/` og undgå at publicere originale HEIC-filer direkte.
 
 Et hovedprojekt kan bruge et screenshot i `preview.image` eller et specialbygget CSS-visual i `preview.visual`.
 
@@ -157,8 +161,9 @@ Et hovedprojekt kan bruge et screenshot i `preview.image` eller et specialbygget
 2. `js/main.js` kalder render-funktionen for hver sektion.
 3. En sektions `.data.js` indeholder det gentagne indhold.
 4. Sektionens `.js` samler indholdet.
-5. Projektgalleriet indlæser kun det valgte medie, når dialogen åbnes.
-6. CSS ligger ved den komponent eller sektion, den påvirker.
+5. Den lille Modbus-previewvideo er komprimeret særskilt; den fulde video indlæses i galleriet.
+6. Projektgalleriet indlæser kun det valgte fulde medie, når dialogen åbnes.
+7. CSS ligger ved den komponent eller sektion, den påvirker.
 
 Det betyder, at en fejl i projektsektionen normalt kan findes i dens egen mappe uden at lede i resten af siden.
 

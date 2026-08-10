@@ -1,9 +1,8 @@
 export function initNetworkCanvas(reducedMotion) {
   const canvas = document.getElementById("networkCanvas");
-  const hero = document.querySelector(".hero");
   const saveData = navigator.connection?.saveData;
 
-  if (!canvas || !hero || saveData) return;
+  if (!canvas || saveData) return;
 
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -16,7 +15,10 @@ export function initNetworkCanvas(reducedMotion) {
   let pointer = { x: -1000, y: -1000 };
 
   const createNodes = () => {
-    const count = Math.max(16, Math.min(44, Math.floor(width / 34)));
+    const count = Math.max(
+      18,
+      Math.min(52, Math.floor((width * height) / 42000)),
+    );
     nodes = Array.from({ length: count }, (_, index) => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -29,8 +31,8 @@ export function initNetworkCanvas(reducedMotion) {
 
   const resize = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    width = hero.clientWidth;
-    height = hero.clientHeight;
+    width = window.innerWidth;
+    height = window.innerHeight;
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     canvas.style.width = `${width}px`;
@@ -116,13 +118,18 @@ export function initNetworkCanvas(reducedMotion) {
     { passive: true },
   );
 
-  hero.addEventListener("pointermove", (event) => {
-    const rect = hero.getBoundingClientRect();
-    pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
-  });
+  window.addEventListener(
+    "pointermove",
+    (event) => {
+      pointer = { x: event.clientX, y: event.clientY };
+    },
+    { passive: true },
+  );
 
-  hero.addEventListener("pointerleave", () => {
-    pointer = { x: -1000, y: -1000 };
+  window.addEventListener("pointerout", (event) => {
+    if (!event.relatedTarget) {
+      pointer = { x: -1000, y: -1000 };
+    }
   });
 
   document.addEventListener("visibilitychange", () => {

@@ -4,6 +4,7 @@ import {
   projectsSection,
 } from "./projects.data.js";
 import {
+  initProjectCardMedia,
   renderFeaturedProject,
   renderProjectCard,
 } from "../../components/project-card/project-card.js";
@@ -11,7 +12,6 @@ import {
   initProjectGallery,
   renderProjectGallery,
 } from "../../components/project-gallery/project-gallery.js";
-import { siteConfig } from "../../config/site.config.js";
 
 export function renderProjects() {
   return `
@@ -30,16 +30,6 @@ export function renderProjects() {
         <div class="project-grid">
           ${projects.map(renderProjectCard).join("")}
         </div>
-
-        <div class="projects-footer reveal">
-          <p>Flere kodeprojekter, skolelabs og eksperimenter ligger på min GitHub.</p>
-          <a
-            class="button button-ghost"
-            href="${siteConfig.links.repositories}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Se alle repositories</a>
-        </div>
       </div>
       ${renderProjectGallery()}
     </section>`;
@@ -47,4 +37,5 @@ export function renderProjects() {
 
 export function initProjects() {
   initProjectGallery([...featuredProjects, ...projects]);
+  initProjectCardMedia();
 }

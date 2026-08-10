@@ -6,7 +6,6 @@ import { siteConfig } from "../../config/site.config.js";
 export function renderHero() {
   return `
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <canvas class="network-canvas" id="networkCanvas" aria-hidden="true"></canvas>
       <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
       <div class="shell hero-grid">

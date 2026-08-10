@@ -7,10 +7,9 @@ export const siteConfig = Object.freeze({
   fullName: "Magnus Mathias Bøg Madsen",
   location: "Odense, Danmark",
   status: "Åben for muligheder",
-  profileImage: "https://avatars.githubusercontent.com/u/40494689?v=4",
+  profileImage: "assets/images/portrait/magnus-server-room.webp",
   links: {
     github: "https://github.com/MagnusMadsen",
-    repositories: "https://github.com/MagnusMadsen?tab=repositories",
     linkedin: "https://www.linkedin.com/in/magnus-b%C3%B8g-madsen/",
   },
   navigation: [

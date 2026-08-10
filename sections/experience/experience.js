@@ -25,14 +25,39 @@ function renderTimelineItem(item) {
 
 function renderCertification(certificate) {
   return `
-    <div class="cert-card">
-      <div class="cert-icon">${certificate.issuer}</div>
-      <div>
-        <strong>${certificate.title}</strong>
-        <span>${certificate.source}</span>
+    <a
+      class="certificate-card"
+      href="${certificate.href}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Åbn ${certificate.title}-certifikatet som PDF"
+    >
+      <div class="certificate-preview">
+        <img
+          src="${certificate.preview}"
+          width="1084"
+          height="767"
+          alt="${certificate.alt}"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="certificate-verified"><i></i> VERIFICERET</span>
       </div>
-      <i>✓</i>
-    </div>`;
+      <div class="certificate-meta">
+        <div>
+          <span>${certificate.issuer} · ${certificate.source}</span>
+          <strong>${certificate.title}</strong>
+          <small>${certificate.date} · ${certificate.duration}</small>
+          <code>${certificate.code}</code>
+        </div>
+        <span class="certificate-open">
+          Åbn PDF
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M7 5h8v8M15 5 6 14" />
+          </svg>
+        </span>
+      </div>
+    </a>`;
 }
 
 export function renderExperience() {
@@ -52,10 +77,18 @@ export function renderExperience() {
           <div class="timeline-column">
             <div class="timeline-label reveal"><span>02</span> ERHVERV</div>
             ${employment.map(renderTimelineItem).join("")}
-            <div class="certifications reveal">
-              <div class="timeline-label"><span>03</span> CERTIFICERINGER</div>
-              ${certifications.map(renderCertification).join("")}
+          </div>
+        </div>
+        <div class="certifications reveal" aria-labelledby="certifications-title">
+          <div class="certifications-heading">
+            <div class="timeline-label"><span>03</span> CERTIFICERINGER</div>
+            <div>
+              <h3 id="certifications-title">TryHackMe Learning Paths</h3>
+              <p>Dokumenteret træning fra fundamentet til en bred introduktion til cybersikkerhed.</p>
             </div>
+          </div>
+          <div class="certificate-grid">
+            ${certifications.map(renderCertification).join("")}
           </div>
         </div>
       </div>
