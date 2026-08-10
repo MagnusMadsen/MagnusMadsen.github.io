@@ -42,7 +42,71 @@ const projectVisuals = {
       <div class="rack-row"><span>03</span><b>STORAGE</b><i></i><i></i><em>RAID / SMB</em></div>
       <div class="rack-row"><span>04</span><b>NETWORK</b><i></i><i></i><em>VLAN / DNS</em></div>
     </div>`,
+  rover: `
+    <div class="project-visual rover-visual" aria-hidden="true">
+      <div class="rover-range rover-range-one"></div>
+      <div class="rover-range rover-range-two"></div>
+      <div class="rover-machine">
+        <i class="rover-wheel rover-wheel-front-left"></i>
+        <i class="rover-wheel rover-wheel-front-right"></i>
+        <i class="rover-wheel rover-wheel-rear-left"></i>
+        <i class="rover-wheel rover-wheel-rear-right"></i>
+        <div class="rover-body">
+          <small>ROVER 01</small>
+          <strong>ESP32</strong>
+          <span><i></i>AUTO</span>
+        </div>
+        <div class="rover-sensors"><i></i><i></i><i></i></div>
+      </div>
+      <div class="rover-telemetry">
+        <span>VL53L0X × 3</span><span>ESP-NOW</span><span>4WD</span>
+      </div>
+    </div>`,
 };
+
+function renderFeaturedPreviewContent(preview) {
+  if (preview.image) {
+    return `
+      <img
+        src="${preview.image}"
+        alt="${preview.imageAlt}"
+        width="${preview.width}"
+        height="${preview.height}"
+        loading="lazy"
+        decoding="async"
+      />`;
+  }
+
+  if (preview.visual === "exploit") {
+    return `
+      <div class="featured-preview-content exploit-featured-visual" aria-hidden="true">
+        <div class="attack-flow">
+          <div class="attack-node">
+            <small>MASTER</small><strong>10.0.0.10</strong>
+          </div>
+          <div class="attack-connection"><span></span><em>ARP / MITM</em></div>
+          <div class="attack-node attack-node-active">
+            <small>INTERCEPT</small><strong>MODBUS MITM</strong>
+          </div>
+          <div class="attack-connection"><span></span><em>TCP / 502</em></div>
+          <div class="attack-node">
+            <small>SLAVE</small><strong>PLC-01</strong>
+          </div>
+        </div>
+        <div class="exploit-terminal">
+          <code><b>exploit&gt;</b> discovery active</code>
+          <code><span>[+]</span> 10.0.0.21 / unit 1 / holding registers</code>
+          <code><b>exploit&gt;</b> capture_start</code>
+          <code><span>[+]</span> intercept ready / authorized lab</code>
+        </div>
+      </div>`;
+  }
+
+  return `
+    <div class="featured-preview-content featured-default-visual" aria-hidden="true">
+      <span>PROJEKTVISUAL MANGLER</span>
+    </div>`;
+}
 
 function renderProjectVisual(project) {
   if (project.image) {
@@ -68,25 +132,21 @@ export function renderFeaturedProject(project) {
         <li><span>${String(index + 1).padStart(2, "0")}</span> ${highlight}</li>`,
     )
     .join("");
+  const overlay = (preview.overlay ?? [])
+    .map((item) => `<span>${item}</span>`)
+    .join("");
 
   return `
-    <article class="featured-project reveal">
+    <article class="featured-project project-${project.id} reveal">
       <div class="featured-preview">
         <div class="preview-toolbar">
           <span><i></i><i></i><i></i></span>
           <code>${preview.path}</code>
           <small>${preview.status}</small>
         </div>
-        <img
-          src="${preview.image}"
-          alt="${preview.imageAlt}"
-          width="${preview.width}"
-          height="${preview.height}"
-          loading="lazy"
-          decoding="async"
-        />
+        ${renderFeaturedPreviewContent(preview)}
         <div class="preview-overlay" aria-hidden="true">
-          ${preview.overlay.map((item) => `<span>${item}</span>`).join("")}
+          ${overlay}
         </div>
       </div>
       <div class="featured-copy">

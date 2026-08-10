@@ -1,5 +1,5 @@
 import {
-  featuredProject,
+  featuredProjects,
   projects,
   projectsSection,
 } from "./projects.data.js";
@@ -19,7 +19,9 @@ export function renderProjects() {
           <p>${projectsSection.introduction}</p>
         </div>
 
-        ${renderFeaturedProject(featuredProject)}
+        <div class="featured-projects">
+          ${featuredProjects.map(renderFeaturedProject).join("")}
+        </div>
 
         <div class="project-grid">
           ${projects.map(renderProjectCard).join("")}

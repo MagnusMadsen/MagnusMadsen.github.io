@@ -4,6 +4,12 @@
   background: var(--bg);
 }
 
+.featured-projects {
+  display: grid;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

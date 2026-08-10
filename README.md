@@ -96,7 +96,9 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 },
 ```
 
-Eksisterende CSS-visualer kan vælges med `visual: "jarvis"`, `"dashboard"`, `"sensor"` eller `"homelab"`. Brug `"default"` til et neutralt kort. Et almindeligt billede kan senere bruges via projektets valgfri `image`-felt.
+Eksisterende CSS-visualer kan vælges med `visual: "jarvis"`, `"dashboard"`, `"sensor"`, `"homelab"` eller `"rover"`. Brug `"default"` til et neutralt kort. Et almindeligt billede kan senere bruges via projektets valgfri `image`-felt.
+
+De store hovedprojekter øverst ligger i `featuredProjects` i samme fil. Et hovedprojekt kan bruge et screenshot i `preview.image` eller et specialbygget CSS-visual i `preview.visual`.
 
 ## Sådan hænger siden sammen
 
