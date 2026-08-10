@@ -49,7 +49,7 @@ export function renderHero() {
             </div>
             <div>
               <dt>FOKUS</dt>
-              <dd>IT/OTamp; sikkerhed</dd>
+              <dd>IT/OT sikkerhed</dd>
             </div>
             <div>
               <dt>BAGGRUND</dt>
