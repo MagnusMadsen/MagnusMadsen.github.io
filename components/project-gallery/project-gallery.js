@@ -37,6 +37,13 @@ function renderNavigationIcon(direction) {
     </svg>`;
 }
 
+function renderArrowIcon() {
+  return `
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M4 10h11M11 6l4 4-4 4" />
+    </svg>`;
+}
+
 export function renderGalleryTrigger(project, className = "") {
   if (!project.gallery?.items?.length) {
     return "";
@@ -90,14 +97,28 @@ function renderGalleryItem(item) {
   const label = escapeHtml(item.label ?? item.type);
   const title = escapeHtml(item.title ?? "Projektmateriale");
   const caption = escapeHtml(item.caption ?? "");
+  const mediaType = item.type === "vimeo" ? "vimeo" : item.type === "video" ? "video" : "image";
+  const aspect = item.aspect === "portrait" ? "portrait" : "landscape";
   const dimensions =
     item.width && item.height
       ? ` width="${Number(item.width)}" height="${Number(item.height)}"`
       : "";
 
-  const media =
-    item.type === "video"
-      ? `
+  let media;
+
+  if (mediaType === "vimeo") {
+    const vimeoId = String(item.vimeoId ?? "").replace(/[^0-9]/g, "");
+
+    media = `
+      <iframe
+        src="https://player.vimeo.com/video/${vimeoId}?autoplay=1&amp;muted=0&amp;playsinline=1&amp;dnt=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;color=ff4d5f"
+        title="${title}"
+        allow="autoplay; fullscreen; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>`;
+  } else if (mediaType === "video") {
+    media = `
         <video
           controls
           playsinline
@@ -107,22 +128,51 @@ function renderGalleryItem(item) {
         >
           <source src="${escapeHtml(item.src)}" type="video/mp4" />
           Din browser understøtter ikke videoafspilning.
-        </video>`
-      : `
+        </video>`;
+  } else {
+    media = `
         <img
           src="${escapeHtml(item.src)}"
           alt="${escapeHtml(item.alt ?? item.title ?? "Projektmateriale")}"
           ${dimensions}
           decoding="async"
         />`;
+  }
+
+  const features = item.features?.length
+    ? `
+      <div class="project-gallery-features">
+        <strong>${escapeHtml(item.featureTitle ?? "Det kan løsningen")}</strong>
+        <ul>
+          ${item.features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join("")}
+        </ul>
+      </div>`
+    : "";
+  const resourceLink = item.link?.href
+    ? `
+      <a
+        class="project-gallery-resource"
+        href="${escapeHtml(item.link.href)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>
+          ${escapeHtml(item.link.label ?? "Se mere")}
+          ${item.link.meta ? `<small>${escapeHtml(item.link.meta)}</small>` : ""}
+        </span>
+        ${renderArrowIcon()}
+      </a>`
+    : "";
 
   return `
-    <figure class="project-gallery-media project-gallery-media-${escapeHtml(item.type)}">
+    <figure class="project-gallery-media project-gallery-media-${mediaType} project-gallery-media-${aspect}">
       <div class="project-gallery-frame">${media}</div>
       <figcaption>
         <span>${label}</span>
         <h4>${title}</h4>
         <p>${caption}</p>
+        ${features}
+        ${resourceLink}
       </figcaption>
     </figure>`;
 }
@@ -151,12 +201,15 @@ export function initProjectGallery(projects) {
   let activeIndex = 0;
   let opener = null;
 
-  function pauseCurrentVideo() {
+  function stopCurrentMedia() {
     const video = stage.querySelector("video");
+    const iframe = stage.querySelector("iframe");
 
     if (typeof video?.pause === "function") {
       video.pause();
     }
+
+    iframe?.remove();
   }
 
   function renderActiveItem() {
@@ -167,7 +220,7 @@ export function initProjectGallery(projects) {
     }
 
     activeIndex = (activeIndex + items.length) % items.length;
-    pauseCurrentVideo();
+    stopCurrentMedia();
     stage.innerHTML = renderGalleryItem(items[activeIndex]);
     counter.textContent = `${String(activeIndex + 1).padStart(2, "0")} / ${String(items.length).padStart(2, "0")}`;
     previousButton.disabled = items.length < 2;
@@ -223,7 +276,7 @@ export function initProjectGallery(projects) {
   }
 
   function cleanupGallery() {
-    pauseCurrentVideo();
+    stopCurrentMedia();
     document.body.classList.remove("gallery-open");
     stage.innerHTML = "";
     opener?.focus();
@@ -231,7 +284,7 @@ export function initProjectGallery(projects) {
   }
 
   function closeGallery() {
-    pauseCurrentVideo();
+    stopCurrentMedia();
 
     if (typeof dialog.close === "function" && dialog.open) {
       dialog.close();
@@ -281,7 +334,7 @@ export function initProjectGallery(projects) {
   });
 
   dialog.addEventListener("keydown", (event) => {
-    if (event.target.closest("video")) {
+    if (event.target.closest("video, iframe")) {
       return;
     }
 

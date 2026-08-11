@@ -16,7 +16,7 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 | Udseendet på et projektkort | `components/project-card/project-card.css` |
 | Projektgalleriet og dets navigation | `components/project-gallery/` |
 | Webklare projektbilleder | `assets/images/projects/` |
-| Projektvideoer og PDF-rapporter | `assets/videos/` og `assets/docs/` |
+| Lokale previewvideoer, Vimeo-demoer og PDF-rapporter | `assets/videos/`, `sections/projects/projects.data.js` og `assets/docs/` |
 | Uddannelse, job eller certifikater | `sections/experience/experience.data.js` |
 | AV/mediepræsentation og Vimeo-video | `sections/experience/experience.data.js` |
 | Billeder fra MBMedier-produktioner | `assets/images/media/mbmedier/` |
@@ -45,7 +45,7 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 │   │   ├── media/                 # WebP-billeder fra AV- og medieproduktion
 │   │   ├── portrait/              # Weboptimeret profilbillede
 │   │   └── projects/              # WebP-billeder sorteret efter projekt
-│   ├── videos/                    # Komprimeret preview og fulde projektvideoer
+│   ├── videos/                    # Lette, komprimerede previewvideoer
 │   └── fonts/                     # Lokale webfonts kan tilføjes her
 │
 ├── components/
@@ -164,8 +164,8 @@ Et hovedprojekt kan bruge et screenshot i `preview.image` eller et specialbygget
 2. `js/main.js` kalder render-funktionen for hver sektion.
 3. En sektions `.data.js` indeholder det gentagne indhold.
 4. Sektionens `.js` samler indholdet.
-5. Den lille Modbus-previewvideo er komprimeret særskilt; den fulde video indlæses i galleriet.
-6. Projektgalleriet indlæser kun det valgte fulde medie, når dialogen åbnes.
+5. Den lille Modbus-previewvideo er komprimeret særskilt; den fulde demo streames fra Vimeo.
+6. Projektgalleriet opretter først Vimeo-afspilleren, når en besøgende åbner demoen.
 7. CSS ligger ved den komponent eller sektion, den påvirker.
 
 Det betyder, at en fejl i projektsektionen normalt kan findes i dens egen mappe uden at lede i resten af siden.

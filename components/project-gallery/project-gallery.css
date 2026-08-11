@@ -114,15 +114,47 @@ body.gallery-open {
 }
 
 .project-gallery-frame img,
-.project-gallery-frame video {
+.project-gallery-frame video,
+.project-gallery-frame iframe {
   width: 100%;
   height: 100%;
   max-height: min(60vh, 650px);
   object-fit: contain;
 }
 
-.project-gallery-frame video {
+.project-gallery-frame video,
+.project-gallery-frame iframe {
+  border: 0;
   background: #030405;
+}
+
+.project-gallery-media-vimeo.project-gallery-media-portrait {
+  grid-template-columns: minmax(280px, 0.72fr) minmax(380px, 1.28fr);
+}
+
+.project-gallery-media-vimeo.project-gallery-media-portrait .project-gallery-frame {
+  min-height: min(64vh, 700px);
+  padding: clamp(18px, 3vw, 34px);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 77, 95, 0.13), transparent 48%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    #05070a;
+  background-size: auto, 28px 28px, 28px 28px, auto;
+}
+
+.project-gallery-media-vimeo.project-gallery-media-portrait .project-gallery-frame iframe {
+  width: auto;
+  height: min(60vh, 650px);
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  box-shadow:
+    0 28px 75px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.project-gallery-media-vimeo figcaption {
+  justify-content: center;
 }
 
 .project-gallery-media figcaption {
@@ -154,6 +186,99 @@ body.gallery-open {
   color: var(--muted);
   font-size: 0.8rem;
   line-height: 1.65;
+}
+
+.project-gallery-features {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.project-gallery-features > strong {
+  color: var(--text);
+  font: 600 0.61rem var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-gallery-features ul {
+  display: grid;
+  gap: 10px;
+  margin: 15px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-gallery-features li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+
+.project-gallery-features li::before {
+  content: "";
+  position: absolute;
+  top: 0.56em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(255, 77, 95, 0.72);
+  background: rgba(255, 77, 95, 0.12);
+}
+
+.project-gallery-resource {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 77, 95, 0.38);
+  color: var(--text);
+  background: rgba(255, 77, 95, 0.055);
+  font: 600 0.58rem var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.project-gallery-resource:hover,
+.project-gallery-resource:focus-visible {
+  border-color: rgba(255, 77, 95, 0.82);
+  background: rgba(255, 77, 95, 0.1);
+  transform: translateY(-2px);
+}
+
+.project-gallery-resource span {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.project-gallery-resource small {
+  color: #ff9ca5;
+  font-size: 0.48rem;
+}
+
+.project-gallery-resource svg {
+  width: 19px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  transition: transform 180ms ease;
+}
+
+.project-gallery-resource:hover svg,
+.project-gallery-resource:focus-visible svg {
+  transform: translateX(3px);
 }
 
 .project-gallery-footer {
@@ -245,6 +370,10 @@ body.gallery-open {
     grid-template-columns: 1fr;
   }
 
+  .project-gallery-media-vimeo.project-gallery-media-portrait {
+    grid-template-columns: 1fr;
+  }
+
   .project-gallery-frame {
     min-height: 46vh;
     padding: 12px;
@@ -257,8 +386,23 @@ body.gallery-open {
     max-height: 46vh;
   }
 
+  .project-gallery-media-vimeo.project-gallery-media-portrait .project-gallery-frame {
+    min-height: 52vh;
+    padding: 14px;
+  }
+
+  .project-gallery-media-vimeo.project-gallery-media-portrait .project-gallery-frame iframe {
+    height: 49vh;
+    max-height: 620px;
+  }
+
   .project-gallery-media figcaption {
     padding: 24px 20px 27px;
+  }
+
+  .project-gallery-features {
+    margin-top: 22px;
+    padding-top: 18px;
   }
 
   .project-gallery-footer {
@@ -284,6 +428,14 @@ body.gallery-open {
   .project-gallery-frame img,
   .project-gallery-frame video {
     max-height: 40vh;
+  }
+
+  .project-gallery-media-vimeo.project-gallery-media-portrait .project-gallery-frame {
+    min-height: 48vh;
+  }
+
+  .project-gallery-media-vimeo.project-gallery-media-portrait .project-gallery-frame iframe {
+    height: 45vh;
   }
 
   .project-gallery-media figcaption p {

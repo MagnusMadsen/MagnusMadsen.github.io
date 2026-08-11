@@ -58,13 +58,26 @@ export const featuredProjects = [
         "Værktøjet er demonstreret i et isoleret miljø med fysisk OT-udstyr, trafikopsamling og kontrollerede angrebsscenarier.",
       items: [
         {
-          type: "video",
+          type: "vimeo",
           label: "DEMO / 02:10",
           title: "Modbus MITM Exploit i drift",
           caption:
-            "En kort demonstration af værktøjets arbejdsgang i det autoriserede testmiljø.",
-          src: "assets/videos/modbus-exploit-demo.mp4",
-          poster: "assets/images/projects/modbus/exploit-demo-poster.webp",
+            "Se den samlede arbejdsgang i et isoleret, autoriseret Modbus TCP-testmiljø — fra kortlægning af enheder til trafikopsamling og kontrolleret overtagelse.",
+          vimeoId: "1217245580",
+          aspect: "portrait",
+          featureTitle: "Repoet samler hele pentest-flowet",
+          features: [
+            "ARP-spoof og bridge-mode placerer testværktøjet mellem master og slave",
+            "Discovery kortlægger Modbus-enheder, unit IDs, coils og registre",
+            "Live parsing og watchers viser trafik, funktioner og manipulation i realtid",
+            "Manual takeover og spoofing afprøver kontrollerede kommandoer mod test-slaves",
+            "PCAP capture og replay dokumenterer og gentager et autoriseret testforløb",
+          ],
+          link: {
+            label: "Se kode og dokumentation",
+            href: "https://github.com/MagnusMadsen/Modbus_exploit_program",
+            meta: "GitHub",
+          },
         },
         {
           type: "image",
