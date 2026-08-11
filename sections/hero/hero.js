@@ -26,7 +26,7 @@ export function renderHero() {
             <a class="button button-primary" href="#projekter">
               Mine projekter
               <svg viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M4 10h11M11 6l4 4-4 4" />
+                <path d="M10 4v11M6 11l4 4 4-4" />
               </svg>
             </a>
             <a class="button button-ghost" href="#erfaring">

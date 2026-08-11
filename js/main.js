@@ -8,7 +8,10 @@ import {
   initProjects,
   renderProjects,
 } from "../sections/projects/projects.js";
-import { renderExperience } from "../sections/experience/experience.js";
+import {
+  initExperienceMedia,
+  renderExperience,
+} from "../sections/experience/experience.js";
 import { renderSkills } from "../sections/skills/skills.js";
 import { renderContact } from "../sections/contact/contact.js";
 import { initNetworkCanvas } from "./modules/network-canvas.js";
@@ -40,6 +43,7 @@ function initInteractions() {
 
   initNavigation();
   initProjects();
+  initExperienceMedia();
   initRevealAnimations(reducedMotion);
   initTiltEffects(reducedMotion);
   initNetworkCanvas(reducedMotion);

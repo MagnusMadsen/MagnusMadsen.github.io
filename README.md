@@ -18,6 +18,8 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 | Webklare projektbilleder | `assets/images/projects/` |
 | Projektvideoer og PDF-rapporter | `assets/videos/` og `assets/docs/` |
 | Uddannelse, job eller certifikater | `sections/experience/experience.data.js` |
+| AV/mediepræsentation og Vimeo-video | `sections/experience/experience.data.js` |
+| Billeder fra MBMedier-produktioner | `assets/images/media/mbmedier/` |
 | Certifikat-forhåndsvisninger | `assets/images/certificates/` |
 | Kompetencer og teknologier | `sections/skills/skills.data.js` |
 | Kontaktteksten | `sections/contact/contact.js` |
@@ -40,6 +42,7 @@ Siden er bygget med ren HTML, CSS og JavaScript og udgives direkte med GitHub Pa
 │   ├── docs/                      # Weboptimerede projektrapporter
 │   ├── images/
 │   │   ├── certificates/          # WebP-forhåndsvisninger af certifikater
+│   │   ├── media/                 # WebP-billeder fra AV- og medieproduktion
 │   │   ├── portrait/              # Weboptimeret profilbillede
 │   │   └── projects/              # WebP-billeder sorteret efter projekt
 │   ├── videos/                    # Komprimeret preview og fulde projektvideoer

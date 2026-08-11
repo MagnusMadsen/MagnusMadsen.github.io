@@ -59,6 +59,46 @@ export const employment = [
   },
 ];
 
+export const mediaShowcase = {
+  label: "03",
+  eyebrow: "AV & MEDIEPRODUKTION",
+  period: "MBMEDIER · 2020 — NU",
+  title: "Teknik, produktion og levering i samme hånd.",
+  introduction:
+    "Som selvstændig har jeg bygget AV-løsninger, afviklet gaming-livestreams og produceret video fra den første opsætning til den færdige leverance. Det har givet mig praktisk erfaring med signalflow, fejlfinding under tidspres og ansvar for hele den tekniske kæde.",
+  capabilities: [
+    "Livestream & multicam",
+    "Kamera, lys & lyd",
+    "Signalflow & AV",
+    "Redigering & levering",
+  ],
+  video: {
+    vimeoId: "1217228048",
+    title: "MBMedier — reklamefilm",
+    label: "53 SEK. SHOWREEL",
+    poster: "assets/images/media/mbmedier/showreel-poster.webp",
+    posterAlt:
+      "Billede fra MBMedier-reklamefilmen med en gaming-livestreamproduktion",
+  },
+  images: [
+    {
+      src: "assets/images/media/mbmedier/livestream-control.webp",
+      alt: "Livestream-kontrolplads med multiview, lydmåling og fysiske styrepaneler",
+      label: "LIVE CONTROL",
+    },
+    {
+      src: "assets/images/media/mbmedier/studio-setup.webp",
+      alt: "Kamera-, lys- og interviewopstilling til DBU eFodbold",
+      label: "KAMERA & LYS",
+    },
+    {
+      src: "assets/images/media/mbmedier/gaming-stage.webp",
+      alt: "Gaming-livestreamscene med kameraer, lys og spillerstationer",
+      label: "GAMING EVENT",
+    },
+  ],
+};
+
 export const certifications = [
   {
     issuer: "TryHackMe",
