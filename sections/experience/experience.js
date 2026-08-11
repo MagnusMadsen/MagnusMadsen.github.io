@@ -80,7 +80,11 @@ function renderMediaShowcase() {
   const { video } = mediaShowcase;
 
   return `
-    <div class="media-experience reveal" aria-labelledby="media-experience-title">
+    <div
+      class="media-experience reveal"
+      id="virksomhed"
+      aria-labelledby="media-experience-title"
+    >
       <div class="media-experience-heading">
         <div class="timeline-label"><span>${mediaShowcase.label}</span> ${mediaShowcase.eyebrow}</div>
         <div>
